@@ -13,7 +13,8 @@ connectDB()
 //middlewares
 app.use(express.json())
 app.use(foodRoute)
-app.use(userRoute)
+app.use("/api/users", userRoute)
+
 
 const PORT = process.env.PORT||9000
 //home route

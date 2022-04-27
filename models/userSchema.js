@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+
 
 const userSchema = mongoose.Schema({
     user:{
@@ -8,15 +9,22 @@ const userSchema = mongoose.Schema({
 
     email:{
         type:String,
-        required:true
+        required:true,
+        unique: true
     },
 
     password:{
-        type:Date,
-        default:Date.now()
-    }}
+        type:String,
+        required: true
 
-  
+    },
+
+    isAdmin:{
+        type: Boolean,
+        default:false
+    }
+
+}
 )
 
 const User = mongoose.model("User", userSchema)
