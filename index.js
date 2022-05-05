@@ -1,28 +1,24 @@
-
 const express = require("express");
 const morgan = require("morgan");
-require("dotenv").config()
+require("dotenv").config();
 const connectDB = require("./config/connectDB");
-const foodRoute = require("./routes/foodRoute")
+const foodRoute = require("./routes/foodRoute");
 const userRoute = require("./routes/userRoute");
 
+const app = express();
 
-const app = express()
-
-connectDB()
+connectDB();
 //middlewares
-app.use(express.json())
-app.use(foodRoute)
-app.use("/api/users", userRoute)
+app.use(express.json());
+app.use("/api/foods", foodRoute);
+app.use("/api/users", userRoute);
 
-
-const PORT = process.env.PORT||9000
+const PORT = process.env.PORT || 9000;
 //home route
-app.get("/", (req, res)=>{
-    res.json("Welcome to my Menu API")
-})
+app.get("/", (req, res) => {
+  res.json("Welcome to my Menu API");
+});
 
-
-app.listen(PORT, ()=>{
-    console.log("SERVER IS UP!!!")
-})
+app.listen(PORT, () => {
+  console.log("SERVER IS UP!!!");
+});
